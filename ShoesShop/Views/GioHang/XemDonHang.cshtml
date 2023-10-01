@@ -1,0 +1,92 @@
+﻿@model IEnumerable<ShoesShop.Models.DONDATHANG>
+@{
+    ViewBag.Title = "Đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <strong class="text-danger text-uppercase">Đơn hàng của tôi</strong>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    Ngày đặt
+                </th>
+                <th>
+                    Ngày giao
+                </th>
+                <th>
+                    Tên khách hàng
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    Ghi chú
+                </th>
+                <th>
+                    Tổng tiền
+                </th>
+                <th>
+                    Tình trạng
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayGiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)<strong> USD</strong>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TINHTRANG.TinhTrangGiao)
+            </td>
+            <td>
+                <a href="@Url.Action("XemChiTietDonHang", "GioHang", new { id = item.MaDDH })" class="btn btn-sm btn-primary">  Xem chi tiết đơn hàng </a>
+            </td>
+            <td>
+                <a href="@Url.Action("HuyDonHang", "GioHang", new { id = item.MaDDH })" class="btn btn-sm btn-primary" style="background-color:crimson">  Hủy đơn </a>
+                @ViewData["ThongBaoHuy"]
+            </td>
+        </tr>
+            }
+
+        </table>
+
+    </div>
+    <div class="back-to-shop"><a href="@Url.Action("Index", "Home")">&leftarrow;</a><span class="text-muted">Trang chủ</span></div>
+</div>
+

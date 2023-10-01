@@ -1,0 +1,129 @@
+﻿@model ShoesShop.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div>
+        <div class="col-md-6">
+            <strong class="text-danger text-uppercase">Xóa sản phẩm</strong>
+        </div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên sản phẩm
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenSanPham)
+            </dd>
+
+            <dt>
+                Ngày cập nhật
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgayCapNhat)
+            </dd>
+
+            <dt>
+                Giá bán
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GiaBan)
+            </dd>
+
+            <dt>
+                Hình ảnh
+            </dt>
+
+            <dd>
+                <img src="@Url.Content("~/Images/" +Model.HinhAnh)" width="50" height="50" />
+            </dd>
+
+            <dt>
+                Số lượng tồn
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SoLuongTon)
+            </dd>
+
+            <dt>
+                Lượt xem
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LuotXem)
+            </dd>
+
+            <dt>
+                Lượt bình chọn
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LuotBinhChon)
+            </dd>
+
+            <dt>
+                Số lượng mua
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SoLuongMua)
+            </dd>
+
+            <dt>
+                New
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Moi)
+            </dd>
+
+            <dt>
+                Danh mục
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DANHMUC.TenDanhMuc)
+            </dd>
+
+            <dt>
+                Hãng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HANGGIAY.TenHang)
+            </dd>
+            <dt>
+                Mô tả
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MoTa)
+            </dd>
+
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

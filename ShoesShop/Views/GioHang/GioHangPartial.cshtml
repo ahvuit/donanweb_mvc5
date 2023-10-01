@@ -1,0 +1,30 @@
+﻿
+@{ var u = Session["user"] as ShoesShop.Models.ACCOUNT;}
+@if (u == null)
+{
+    <a class="nav navbar-nav navbar-right " href="#" @*@Url.Action("GioHang",
+"GioHang")*@ style="font-weight:bold; text-decoration:none; color:#fff; font-weight:bold; font-size:20px;" data-toggle="modal" data-target="#LoginModal">
+        <img src="~/Images/icon_GioHang.png" style="width:35px; height:40px; margin:5px 0px 5px 15px ;">
+        @if (@ViewBag.Tongsoluongsanpham > 0)
+        {
+            <span class=" badge rounded-pill " style="background-color:red; ">
+                @ViewBag.Tongsoluongsanpham</span">
+            }
+</a>
+}
+else
+{
+<a class="nav navbar-nav navbar-right " href="@Url.Action("GioHang",
+"GioHang")"  style="font-weight:bold; text-decoration:none; color:#fff; font-weight:bold; font-size:20px;" >
+    <img src="~/Images/icon_GioHang.png" style="width:35px; height:40px; margin:5px 0px 5px 15px ;">
+    @if (@ViewBag.Tongsoluongsanpham > 0)
+    {
+        <span class=" badge rounded-pill " style="background-color:red; ">
+            @ViewBag.Tongsoluongsanpham</span">
+        }
+</a>
+}
+
+
+
+

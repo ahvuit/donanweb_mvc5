@@ -1,0 +1,117 @@
+﻿@model IEnumerable<ShoesShop.Models.BANGSIZE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <strong class="text-danger text-uppercase">Quản lý bảng size</strong>
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="@Url.Action("Create","BangSize")" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Thêm Mới</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    Tên sản phẩm
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s38)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s39)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s40)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s41)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s42)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s42_5)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s43)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s44)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s45)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s46)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s47)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.s48)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SANPHAM.TenSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s38)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s39)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s40)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s41)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s42)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s42_5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s43)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s44)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s45)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s46)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s47)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s48)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "BangSize", new { id = item.MaSize })" class="btn btn-sm btn-info"> <i class="fas fa-edit"></i> Sửa </a>
+                <a href="@Url.Action("Details", "BangSize", new { id = item.MaSize })" class="btn btn-sm btn-primary"> <i class="fas fa-eye"> Xem </i></a>
+                <a href="@Url.Action("Delete", "BangSize", new { id = item.MaSize })" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i> Xóa </a>
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
+</div>
+

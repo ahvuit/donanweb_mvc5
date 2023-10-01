@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<ShoesShop.Models.DOANHTHUTHANG>
+@using PagedList.Mvc;
+@{ ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<link href="~/Content/Css/CssPage/style.css" rel="stylesheet" />
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <strong class="text-danger text-uppercase">Thống kê doanh số</strong>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    Tháng
+                </th>
+                <th>
+                    Năm
+                </th>
+                <th>
+                    Số lượng giày bán:
+                </th>
+                <th>
+                    Doanh thu
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Thang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoLuongGiayBan)
+                    </td>
+                    <td>
+                        @String.Format("{0:0,0}", item.DoanhThu) USD
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+</div>
+<div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+                     new { page }))
+</div>

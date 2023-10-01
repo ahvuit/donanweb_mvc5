@@ -1,0 +1,30 @@
+﻿@model ShoesShop.Models.HANGGIAY
+
+@{
+    ViewBag.Title = @Html.DisplayFor(model => model.TenHang);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Name: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenHang)
+        </dd>
+
+        <dt>
+            Information: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThongTin)
+        </dd>
+
+        <dd>
+            <img src="@Url.Content("~/Images/" + Model.Logo) " width="250" height="250"/>
+        </dd>
+
+    </dl>
+</div>

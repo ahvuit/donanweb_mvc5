@@ -1,0 +1,127 @@
+﻿@model ShoesShop.Models.BANGSIZE
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div>
+    <div class="col-md-6">
+        <strong class="text-danger text-uppercase">Xóa bảng size</strong>
+    </div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SANPHAM.TenSanPham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SANPHAM.TenSanPham)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s38)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s38)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s39)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s39)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s40)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s40)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s41)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s41)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s42)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s42)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s42_5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s42_5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s43)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s43)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s44)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s44)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s45)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s45)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s46)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s46)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s47)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s47)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s48)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s48)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

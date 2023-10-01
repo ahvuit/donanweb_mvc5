@@ -1,0 +1,93 @@
+﻿body {
+}
+/*--starts-logo--*/
+.logo {
+    text-align: center;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+    .logo a h1 {
+        font-size: 40px;
+        color: #000000;
+        margin: 0;
+        font-family: 'Lora-Regular';
+        display: inline-block;
+    }
+
+    .logo a:hover h1 {
+        text-decoration: none;
+        color: pink;
+    }
+/*--end-logo--*/
+
+.nav .subnav {
+    list-style-type: none;
+}
+
+.subnav {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding-left: 0;
+}
+
+.nav > .grid > a {
+    line-height: 50px;
+    padding: 0 24px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.nav .subnav li:hover a,
+.nav > li:hover > a {
+    color: white;
+    background-color: #ccc;
+}
+
+
+.nav li a {
+    text-decoration: none;
+    display: block;
+}
+
+.nav .subnav a {
+    line-height: 22px;
+    padding: 8px 12px;
+    color: #000;
+}
+
+.nav li:hover .subnav {
+    display: block;
+}
+
+.nav .login {
+    line-height: 50px;
+    padding: 0 0;
+    color: #000;
+}
+@media (max-width: 1200px) {
+    .nav-an {
+        display: none;
+        visibility:hidden;
+        clear:both;
+    }
+}
+/*@media (min-width: 766px) {
+    .hienkhiscrumscreen {
+        display: none;
+        visibility: hidden;
+        clear: both;
+    }
+}
+@media (max-width: 766px) {
+    .hienkhiscrumscreen {
+        width:20%;
+    }
+}*/
+
+
+/*----Product-----*/

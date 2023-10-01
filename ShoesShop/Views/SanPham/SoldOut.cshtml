@@ -1,0 +1,34 @@
+﻿@using ShoesShop.Models
+@model IEnumerable<ShoesShop.Models.SANPHAM>
+@{
+    Layout = null;
+}
+<div class="row">
+    <div style="background-color:#ccc; text-align:center;border-bottom:1px solid #ccc; padding:10px;">Bán hết</div>
+    @foreach (var item in Model)
+    {
+        <div class=" a col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a class="ctsp" href="@Url.Action("Details","SanPham", new { @id = item.MaSP })">
+                <div class="panel ">
+                    <div class="panel-body">
+                        <p class="Hinh"><img src="@Url.Content("~/Images/" + item.HinhAnh)" alt="hinh thumnail" style="width: 230px; height: 230px;"></p>
+                        <div class="product-label">
+                            @if (@item.SoLuongTon == 0 || item.SoLuongTon == null)
+                            {
+                                <span class="sold_out"><span>Sold out</span></span>
+                            }
+                        </div>
+                        <h3 class="tensp">@item.TenSanPham</h3>
+                        
+                        @if (@item.SoLuongTon == null || @item.SoLuongTon == 0)
+                        {
+                            <h4 style="color:red; font-weight:bold;"><strong style="color:#000;color:lightgreen;">Liên hệ</strong></h4>
+                        }
+                        <div class="SLMua">Đã bán: @item.SoLuongMua</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+
+</div>

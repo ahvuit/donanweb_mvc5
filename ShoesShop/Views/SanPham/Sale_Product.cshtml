@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<ShoesShop.Models.CHITIETKHUYENMAI>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Khuyến mãi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Css/CssPage/style.css" rel="stylesheet" />
+<link href="~/Content/Css/CssSale/style.css" rel="stylesheet" />
+
+<div class="count_and_sort">@ViewBag.TenSale <br /> @ViewBag.count Sản phẩm</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (@item.SANPHAM.SoLuongTon > 0)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <a href="@Url.Action("Details", new {@id=item.MaSP })">
+                    <div class="panel ">
+                        <div class="panel-body">
+                            <p class="Hinh"><img src="@Url.Content("~/Images/" +item.SANPHAM.HinhAnh)" alt="hinh thumnail" style="width: 230px; height: 230px;"></p>
+                            <div class="product-label">
+                                <span class="feature"><span>@item.KHUYENMAI.TenKhuyenMai</span></span>
+                            </div>
+                            <h3 class="tensp">@item.SANPHAM.TenSanPham</h3>
+                            <h4><strong>Hãng: </strong>@item.SANPHAM.HANGGIAY.TenHang</h4>
+                            <h4><strong></strong>@item.SANPHAM.DANHMUC.TenDanhMuc</h4>
+                            <h4 style="color:red; font-weight:bold;"><strong style="color:#000;"></strong>@item.GiaKM USD</h4>
+                            <h4 style="text-decoration: line-through; color: rgba(153,153,153,1); font-weight:bold;"><strong style="color:#000;"></strong>@item.SANPHAM.GiaBan USD</h4>
+                            <div class="SLMua">Đã bán: @item.SANPHAM.SoLuongMua</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    }
+</div>
+<div>
+    <div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+        @Model.PageCount
+    </div>
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Sale_Product", new { page = page }))
+    </div>
+</div>
+@Html.Action("SoldOut", "SanPham")

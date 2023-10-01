@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title | VLTH Store</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Css/CssHome/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="~/Images/iconWeb.png" rel="shortcut icon" />
+
+</head>
+<body style="background-color:#fff">
+    <div>
+        <div class="navbar navbar-inverse navbar-fixed-top ">
+            <div class="container">
+                @Html.Action("MenuPartial", "Home")
+            </div>
+        </div>
+        <div class="logo" style="background-color: #fff;margin-top:0; padding: 60px 0 10px 0px;">
+            <div><a  href="@Url.Action("Index","Home")"><img src="~/Images/Logo_Hustle.jpg" style="width:300px;height:300px" /></a></div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+        </div>
+    </div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Bạn có chắc chắn muốn đăng xuất?</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="@Url.Action("Logout","Home")">Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Modal-->
+    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+
+                </div>
+                <div class="modal-body">Hãy đăng nhập VLTH Store để sử dụng nhiều chức năng và ưu đãi hơn.</div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" href="@Url.Action("GioHang","GioHang")">Để sau</a>
+                    <a class="btn btn-primary" href="@Url.Action("DangNhap","Home")">Đăng nhập</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+@Html.Partial("_Footer")
+</html>

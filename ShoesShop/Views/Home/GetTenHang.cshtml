@@ -1,0 +1,22 @@
+﻿
+@using ShoesShop.Models
+
+@model IEnumerable<HANGGIAY>
+
+
+
+<li class="grid ">
+    <a href="@Url.Action("Product","SanPham")"><h6>Tất cả sản phẩm</h6></a>
+</li>
+@foreach (var item in Model)
+{
+    if (item != null)
+    {
+        <li class="grid">
+            <a href="@Url.Action("Product", "SanPham", new { id = @item.MaHang })"><img src="@Url.Content("~/Images/" +@item.Logo)" style="width:40px; height:22px; margin-right:4px;" /> @item.TenHang</a>
+
+        </li>
+    }
+}
+
+

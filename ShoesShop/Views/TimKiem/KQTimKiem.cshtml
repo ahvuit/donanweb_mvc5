@@ -1,0 +1,103 @@
+﻿@model PagedList.IPagedList<ShoesShop.Models.SANPHAM>
+@using PagedList.Mvc;
+@*@using ShoesShop.Models
+    @model IEnumerable<SANPHAM>*@
+@{
+    ViewBag.Title = "Tìm kiếm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Css/CssSale/style.css" rel="stylesheet" />
+
+<div style="font-size:small; text-align:center;border-bottom:1px solid #ccc; padding:10px;">Kết quả tìm kiếm cho: @ViewBag.tukhoa <br /> @ViewBag.count Sản phẩm</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="@Url.Action("Details","SanPham", new {@id=item.MaSP })">
+                <div class="panel ">
+                    <div class="panel-body">
+                        <p class="Hinh"><img src="@Url.Content("~/Images/" +item.HinhAnh)" alt="hinh thumnail" style="width: 230px; height: 230px;"></p>
+                        <div class="product-label">
+                            @if (@item.SoLuongTon == 0)
+                            {
+                                <span class="sold_out"><span>Sold out</span></span>
+                            }
+                            else
+                            if (@item.Moi == true)
+                            {
+                                <span class="feature"><span>Mới</span></span>
+                            }
+                        </div>
+                        <h3 class="tensp">@item.TenSanPham</h3>
+                        <h4><strong>Hãng: </strong>@item.HANGGIAY.TenHang</h4>
+                        <h4><strong></strong>@item.DANHMUC.TenDanhMuc</h4>
+                        @if (@item.SoLuongTon == null || @item.SoLuongTon == 0)
+                        {
+                            <h4 style="color:red; font-weight:bold;"><strong style="color:#000;color:lightgreen;">Liên hệ</strong></h4>
+                        }
+                        else
+                        {
+                            <h4 style="color:red; font-weight:bold;"><strong style="color:#000;"></strong>@item.GiaBan USD</h4>
+                        }
+                        <div class="SLMua">Đã bán: @item.SoLuongMua</div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    }
+</div>
+<div>
+    <div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+        @Model.PageCount
+    </div>
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("KQTimKiem", new { page = page, @sTuKhoa = @ViewBag.tukhoa }))
+    </div>
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+<style type="text/css">
+    #mau-nut a {
+        clear: both;
+        background-color: orange;
+        color: snow;
+    }
+
+        #mau-nut a:hover {
+            background-color: darkcyan;
+            color: snow;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var maxLength = 100;
+        $(".show-read-more").each(function () {
+            var myStr = $(this).text();
+            if ($.trim(myStr).length > maxLength) {
+                var newStr = myStr.substring(0, maxLength);
+                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                $(this).empty().html(newStr);
+
+                $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a>');
+
+                $(this).append('<span class="more-text">' + removedStr +
+                    '</span>');
+            }
+        });
+        $(".read-more").click(function () {
+            $(this).siblings(".more-text").contents().unwrap();
+            $(this).remove();
+        });
+    });
+</script>
+<style>
+    .show-read-more .more-text {
+        display: none;
+    }
+</style>

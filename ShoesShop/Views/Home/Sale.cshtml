@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+<div class="row">
+    <div>
+        <h2 style="text-align: center; margin: 30px auto;padding:15px 0; border-top:1px solid #ccc; "><a href="@Url.Action("Sale","SanPham")" style="text-decoration: none; color: black;">Khuyến mãi</a></h2>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <a href="@Url.Action("Details","SanPham", new {@id=item.MaSP })">
+                        <div class="panel ">
+                            <div class="panel-body">
+                                <p class="Hinh"><img src="@Url.Content("~/Images/" + item.SANPHAM.HinhAnh)" alt="hinh thumnail" style="width: 230px; height: 230px;"></p>
+                                <div class="product-label">
+                                    @if (@item.SANPHAM.SoLuongTon == 0 || @item.SANPHAM.SoLuongTon == null)
+                                    {
+                                        <span class="sold_out"><span>Sold out</span></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="feature"><span>@item.KHUYENMAI.TenKhuyenMai</span></span>
+                                    }
+                                </div>
+                                <h3 class="tensp">@item.SANPHAM.TenSanPham</h3>
+                                <h4><strong>Hãng: </strong>@item.SANPHAM.HANGGIAY.TenHang</h4>
+                                @if (@item.SANPHAM.SoLuongTon == null || @item.SANPHAM.SoLuongTon == 0)
+                                {
+                                    <h4 style="color:red; font-weight:bold;"><strong style="color:#000;color:lightgreen;">Liên hệ</strong></h4>
+                                    <h4 style="text-decoration: line-through; color: rgba(153,153,153,1); font-weight:bold;visibility:hidden;"><strong style="color:#000;"></strong>@item.SANPHAM.GiaBan USD</h4>
+                                }
+                                else
+                                {
+                                    <h4 style="color:red; font-weight:bold;"><strong style="color:#000;"></strong>@item.GiaKM USD</h4>
+                                    <h4 style="text-decoration: line-through; color: rgba(153,153,153,1); font-weight:bold;"><strong style="color:#000;"></strong>@item.SANPHAM.GiaBan USD</h4>
+                                }
+                                <div class="SLMua">Đã bán: @item.SANPHAM.SoLuongMua</div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <p style="text-align:center;"><a class="btn btn-danger " href="@Url.Action("Sale_Product","SanPham")">Xem Thêm &raquo;</a></p>
+    </div>
+</div>

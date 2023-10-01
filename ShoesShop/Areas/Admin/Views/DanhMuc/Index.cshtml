@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ShoesShop.Models.DANHMUC>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <strong class="text-danger text-uppercase">Quản lý danh mục</strong>
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="@Url.Action("Create","DanhMuc")" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Thêm Mới</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    Tên danh mục
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenDanhMuc)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", "DanhMuc", new { id = item.MaDanhMuc })" class="btn btn-sm btn-info"> <i class="fas fa-edit"></i> Sửa </a>
+                        <a href="@Url.Action("Delete", "DanhMuc", new { id = item.MaDanhMuc })" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i> Xóa </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

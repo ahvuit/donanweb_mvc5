@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ShoesShop.Models.GioHang>
+
+@{
+    ViewBag.Title = "Đặt hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <legend style="font-size: 27px; padding: 10px;">Thông tin</legend>
+</div>
+<div class="card">
+    <div class="row">
+        @Html.Action("DatHangPartial", "GioHang")
+        <div class="col-md-4 summary">
+            <div>
+                <legend class="text-center header">Đơn hàng của bạn</legend>
+            </div>
+            <div>
+                <table class="table">
+                    <tr>
+                        <th style="width:50%">Sản phẩm</th>
+                        <th></th>
+                        <th>Tạm tính </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="border-top: 1px solid #fff; margin-top: 4px">@Html.DisplayFor(modelItem => item.tensp)</td>
+                            @using (Html.BeginForm("CapNhatGiohang", "GioHang", new { @id = item.masp }))
+                            {
+                                <td style="width: 100%; margin-right: 5px; border-top: 1px solid #fff; margin-top: 4px"><img src="@Url.Content("~/Images/" +item.hinh)" width=50 /> - @Html.DisplayFor(modelItem => item.iSoLuong) - @Html.DisplayFor(model => item.size)</td>
+                                <td style="border-top: 1px solid #fff; margin-top: 4px">@String.Format("{0:0,0}", item.dThanhTien)</td>
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
+            <hr />
+            @{
+                decimal x = 5;
+                decimal y = ViewBag.TongTien + x;
+            }
+            <div style="font-weight:bold; color:red">
+                <p>Số lượng sản phẩm: @ViewBag.Tongsoluong</p>
+                <p>Số loại sản phẩm: @ViewBag.Tongsoluongsanpham</p>
+                <p>
+                    Tổng tiền:
+                    @String.Format("{0:0,0}", @y) USD
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

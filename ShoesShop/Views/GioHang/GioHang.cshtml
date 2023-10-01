@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ShoesShop.Models.GioHang>
+
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Css/CssShoppingCrat/style.css" rel="stylesheet" />
+<div class="card">
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col">
+                        <h4><b>Shopping Cart</b></h4>
+                    </div>
+                    <div class="col align-self-center text-right text-muted">@ViewBag.Tongsoluongsanpham items</div>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table">
+                    <tr>
+                        <th>Hình</th>
+                        <th>Sản phẩm</th>
+                        <th>Size</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                <tr class="main">
+                    <td>
+                        <a href="@Url.Action("Details","SanPham", new {@id=item.masp })">
+                            <p class="Hinh"><img src="@Url.Content("~/Images/" +item.hinh)" alt="hinh thumnail" style="width: 100px;height:100px "></p>
+                        </a>
+                    </td>
+                    <td><p style="width:100%">@Html.DisplayFor(modelItem => item.tensp)</p></td>
+                    @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @id = item.masp, @size = item.size }))
+                    {
+                        <td><input type="text" value="@Html.DisplayFor(modelItem => item.size)" name="size" style="width: 50%; margin:0; text-align:center" readonly /></td>
+                        <td>@String.Format("{0:0,0}", item.giaban)</td>
+                        <td> <input type="number" min="1" name="txtSoLg" value="@item.iSoLuong" style="width: 50%;margin:0; text-align:center" /></td>
+                        @ViewData["SoLuongTon"]
+                        <td>@String.Format("{0:0,0}", item.dThanhTien)</td>
+                        <td>
+                            <div class="col" style="vertical-align: middle; text-align: center; float: left; ">
+                                @Html.ActionLink("X", "XoaGioHang", new { @id = item.masp, @size = item.size })
+                            </div>
+                        </td>
+                        <td><input type="submit" value="Cập Nhật" class="btn-success" style="border: 1px solid rgba(0, 0, 0, 0.137); padding: 1vh; outline: none; width: 100%; background-color: lightseagreen" /></td>
+                    }
+
+                </tr>
+                    }
+                </table>
+            </div>
+
+            <div class="back-to-shop"><a href="@Url.Action("Index","Home")">&leftarrow;</a><span class="text-muted">Về trang chủ</span></div>
+        </div>
+        <div class="col-md-4 summary">
+            <div>
+                <h5><b>Summary</b></h5>
+            </div>
+            <hr>
+            <div>
+                <div class="col-sm-6">ITEMS @ViewBag.Tongsoluongsanpham</div>
+                <div class="col-sm-6 text-right">@String.Format("{0:0,0}", @ViewBag.Tongtien) USD</div>
+            </div>
+            <hr />
+            @{
+                decimal x = 5;
+                decimal y = ViewBag.TongTien + x;
+            }
+            <form style="padding: 2vh 0">
+                <p>SHIPPING</p> <select>
+                    <option class="text-muted">Standard-Delivery- &dollar;@x</option>
+                </select>
+                <p>GIVE CODE</p> <input id="code" placeholder="Enter your code" style="border: 1px solid rgba(0, 0, 0, 0.137); padding: 1vh; margin-bottom: 4vh; outline: none; width: 100%; background-color: rgb(247, 247, 247)">
+            </form>
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                <div class="col-sm-6 "><p>Total</p></div>
+                <div class="col-sm-6 text-right">
+                    <p>@String.Format("{0:0,0}", @y) USD</p>
+                </div>
+            </div>
+            <div>
+                <a href="@Url.Action("DatHang","GioHang")" class="btn btn-sm btn-success" style="background-color: #000; border-color: #000; color: white; width: 100%; font-size: 1rem; margin-top: 4vh; padding: 1vh; border-radius: 0">Tiến hành thanh toán</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,17 @@
+﻿
+@using ShoesShop.Models
+
+@model IEnumerable<KHUYENMAI>
+
+
+@foreach (var item in Model)
+{
+    if (item != null)
+    {
+        <li class="grid">
+            <a href="@Url.Action("Sale_Product", "SanPham", new { id = item.MaKhuyenMai })">@item.TenKhuyenMai</a>
+
+        </li>
+    }
+}
+

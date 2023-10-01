@@ -1,0 +1,40 @@
+﻿@model ShoesShop.Models.CHITIETKHUYENMAI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div>
+    <div class="col-md-6">
+        <strong class="text-danger text-uppercase">Chi tiết sản phẩm khuyến mãi</strong>
+    </div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên khuyến mãi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHUYENMAI.TenKhuyenMai)
+        </dd>
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SANPHAM.TenSanPham)
+        </dd>
+        <dt>
+            Giá khuyến mãi
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaKM)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaSP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

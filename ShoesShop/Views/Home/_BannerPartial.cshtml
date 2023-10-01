@@ -1,0 +1,45 @@
+﻿<link href="~/Content/Css/CssBanner/style.css" rel="stylesheet" />
+<div class="container">
+    <div id="mycarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#mycarousel" data-slide-to="1"></li>
+            <li data-target="#mycarousel" data-slide-to="2"></li>
+            <li data-target="#mycarousel" data-slide-to="3"></li>
+            <li data-target="#mycarousel" data-slide-to="4"></li>
+            <li data-target="#mycarousel" data-slide-to="5"></li>
+            <li data-target="#mycarousel" data-slide-to="6"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <a class="header" href="@Url.Action("Product","SanPham",new { id = 4})"><img src="~/Images/BannerAdidas.png" style="width: 100%; height: 10%;"></a>
+            </div>
+            <div class="item">
+                <a class="header" href="@Url.Action("Product","SanPham",new { id = 3})"><img src="~/Images/BannerAnanas.jpg" style="width: 100%; height: 10%;"> </a>
+            </div>
+            <div class="item">
+                <a class="header" href="@Url.Action("Product","SanPham",new { id = 1})"><img src="~/Images/BannerNike.jpg" style="width: 100%; height: 10%;"></a>
+            </div>
+            <div class="item">
+                <a class="header" href="@Url.Action("Product","SanPham",new { id = 1})"><img src="~/Images/BannerJodan.jpg" style="width: 100%; height: 10%;"></a>
+            </div>
+            <div class="item">
+                <a class="header" href="@Url.Action("Product","SanPham",new { id = 2})"><img src="~/Images/BannerPuma.png" style="width: 100%; height: 10%;"></a>
+            </div>
+            <div class="item">
+                <a class="header" href="@Url.Action("Product","SanPham",new { id = 1})"><img src="~/Images/BannerNike1.jpg" style="width: 100%; height: 10%;"></a>
+            </div>
+            <div class="item">
+                <a class="header" href="@Url.Action("Product","SanPham",new { id = 5})"><img src="~/Images/BannerVans.jpg" style="width: 100%; height: 10%;"></a>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#mycarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">previous</span>
+        </a>
+        <a class="right carousel-control" href="#mycarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">next</span>
+        </a>
+    </div>
+</div>

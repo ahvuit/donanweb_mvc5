@@ -1,0 +1,76 @@
+﻿@model ShoesShop.Models.ACCOUNT
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <div class="col-md-6">
+        <strong class="text-danger text-uppercase">Thêm Account mới</strong>
+    </div>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2" for="UserName">
+            Tên đăng nhập:
+        </label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            @ViewData["TenNguoiDungDaTonTai"]
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Password">
+            Mật khẩu:
+        </label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { type = "Password", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="RePassword">
+            Mật khẩu xác nhận:
+        </label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line input-validation-error"
+                   data-val="true" data-val-required="Phải nhập mật khẩu xác nhận!"
+                   id="RePassword" name="RePassword" type="password" value="" aria-
+                   describedby="RePassword-error" aria-invalid="true">
+
+
+            @ViewData["MatKhauGiongNhau"]
+            @ViewData["NhapMKXN"]
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaQuyen, "Tên Quyền", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("MaQuyen", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaQuyen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

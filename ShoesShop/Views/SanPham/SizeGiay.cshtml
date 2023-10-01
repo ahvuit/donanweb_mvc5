@@ -1,0 +1,222 @@
+﻿@model ShoesShop.Models.BANGSIZE
+@{
+    Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+        @*input[type="radio"] + label {
+	    -webkit-transition: all 0.2s;
+	    transition: all 0.2s;
+        }*@
+
+
+        input:hover, label:hover {
+            cursor: pointer;
+        }
+        label {
+            border: 1px solid #000;
+            border-radius: 2px;
+            padding:3px 10px;
+            text-align: center;
+        }
+        .btnsave:hover + label,
+        .btnsave:checked + label,
+        .btnsave:focus + label {
+            background-color: black;
+            color: white;
+        }
+        
+        .btndisable, .het
+        {
+            background-color: #ccc;
+            
+        }
+        
+
+    </style>
+
+</head>
+
+<body>
+   
+    <div class="radio-toolbar">
+        @if (Model.s38 > 0)
+        {
+
+            <input type="radio" class="btnsave" value="38" name="button2" /><label>38</label>
+
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="38" disabled name="button2" /><label class="het">38</label>
+        }
+
+        @if (Model.s39 > 0)
+        {
+            <input type="radio" class="btnsave" value="39" name="button2" /><label>39</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="39" disabled name="button2" /><label class="het">39</label>
+        }
+
+        @if (Model.s40 > 0)
+        {
+            <input type="radio" class="btnsave" value="40" name="button2" /><label>40</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="40" disabled name="button2" /><label class="het">40</label>
+        }
+
+        @if (Model.s41 > 0)
+        {
+            <input type="radio" class="btnsave" value="41" name="button2" /><label>41</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="41" disabled name="button2" /><label class="het">41</label>
+        }
+
+        @if (Model.s42 > 0)
+        {
+            <input type="radio" class="btnsave" value="42" name="button2" /><label>42</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="42" disabled name="button2" /><label class="het">42</label>
+        }
+
+        @if (Model.s42_5 > 0)
+        {
+            <input type="radio" class="btnsave" value="42.5" name="button2" /><label>42.5</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="42.5" disabled name="button2" /><label class="het">42.5</label>
+        }
+
+        @if (Model.s43 > 0)
+        {
+            <input type="radio" class="btnsave" value="43" name="button2" /><label>43</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="43" disabled name="button2" /><label class="het">43</label>
+        }
+
+        @if (Model.s44 > 0)
+        {
+            <input type="radio" class="btnsave" value="44" name="button2" /><label>44</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="44" disabled name="button2" /><label class="het">44</label>
+        }
+
+        @if (Model.s45 > 0)
+        {
+            <input type="radio" class="btnsave" value="45" name="button2" /><label>45</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="45" disabled name="button2" /><label class="het">45</label>
+        }
+
+        @if (Model.s46 > 0)
+        {
+            <input type="radio" class="btnsave" value="46" name="button2" /><label>46</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="46" disabled name="button2" /><label class="het">46</label>
+        }
+
+        @if (Model.s47 > 0)
+        {
+            <input type="radio" class="btnsave" value="47" name="button2" /><label>47</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="47" disabled name="button2" /><label class="het">47</label>
+        }
+
+        @if (Model.s48 > 0)
+        {
+            <input type="radio" class="btnsave" value="48" name="button2" /><label>48</label>
+        }
+        else
+        {
+            <input type="radio" class="btndisable" value="48" disabled name="button2" /><label class="het">48</label>
+        }
+    </div>
+</body>
+<style>
+    input {
+        margin-top: 3px;
+    }
+        @*input.btnsave {
+            background-color: white;
+        }
+        input.btndisable {
+            background-color: gray
+        }
+    input:focus {
+        background-color: black;
+        color: white;
+    }*@
+    /*
+    .details small{
+    width: 40px;
+    height: 40px;
+    Line-height: 40px;
+    display: inline-block;
+    margin: 0 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+        
+    .radio-toolbar {
+        margin: 10px;
+    }
+
+        .radio-toolbar input[type="radio"] {
+            opacity: 0;
+            position: fixed;
+            width: 0;
+        }
+
+        .radio-toolbar label {
+            display: inline-block;
+            padding: 10px 20px;
+            font-family: sans-serif, Arial;
+            font-size: 16px;
+            border: 2px solid #444;
+            border-radius: 1px;
+        }
+
+        .radio-toolbar input[type="radio"]:focus + label {
+            background-color: black;
+            color: white;
+        }
+
+        .radio-toolbar input[type="radio"].btndisable + label {
+            background-color: gray
+        }
+        .radio-toolbar input[type="radio"].btnsave + label {
+            background-color: white;
+        }*/
+}
+</style>
+<script>
+    var btndisable = document.getElementById("btndisable");
+    btndisable.disable = true;
+</script>
+

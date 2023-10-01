@@ -1,0 +1,108 @@
+﻿@model PagedList.IPagedList<ShoesShop.Models.SANPHAM>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Trang chủ";
+}
+<link href="~/Content/Css/CssSale/style.css" rel="stylesheet" />
+@Html.Partial("_BannerPartial")
+<div id="nav_phu">
+    <a href="@Url.Action("Product","SanPham")">
+        <div class="subnav_phu">
+            <img class="image_subnav_phu" src="~/Images/icon_allproduct_phu.png" />
+            <div class="ten_subnav_phu">Tất cả sản phẩm</div>
+        </div>
+    </a>
+    <a href="@Url.Action("New_Product","SanPham")">
+        <div class="subnav_phu">
+            <img class="image_subnav_phu" src="~/Images/icon_new_phu.png" />
+            <div class="ten_subnav_phu">Sản phẩm mới</div>
+        </div>
+    </a>
+    <a href="@Url.Action("Sale_Product","SanPham")">
+        <div class="subnav_phu">
+            <img class="image_subnav_phu" src="~/Images/icon_sale_phu.png" />
+            <div class="ten_subnav_phu">Khuyến mãi</div>
+        </div>
+    </a>
+    <a href="@Url.Action("Contact","Home")">
+        <div class="subnav_phu">
+            <img class="image_subnav_phu" src="~/Images/icon_contact_phu.png" />
+            <div class="ten_subnav_phu">Liên hệ</div>
+        </div>
+    </a>
+
+</div>
+<div class="row">
+    <div>
+        <h2 style="text-align: center; margin: 30px auto;padding:15px 0; border-top:1px solid #ccc; "><a href="@Url.Action("Product","SanPham")" style="text-decoration: none; color: black;">Tất cả sản phẩm</a></h2>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <a href="@Url.Action("Details","SanPham", new {@id=item.MaSP })">
+                        <div class="panel ">
+                            <div class="panel-body">
+                                <p class="Hinh"><img src="@Url.Content("~/Images/" +item.HinhAnh)" alt="hinh thumnail" style="width: 230px; height: 230px;"></p>
+                                <div class="product-label">
+                                    @{var x = item.CHITIETKHUYENMAIs.Where(m => m.MaSP == item.MaSP).FirstOrDefault(); }
+                                    @if (@item.SoLuongTon == 0 || @item.SoLuongTon == null)
+                                    {
+                                        <span class="sold_out"><span>Sold out</span></span>
+                                    }
+                                    else
+                                    {
+                                        if (@item.Moi == true)
+                                        {
+                                            if (x != null)
+                                            {
+                                                <span class="feature"><span>@x.KHUYENMAI.TenKhuyenMai</span></span>
+                                            }
+                                            else
+                                            {
+                                                <span class="feature"><span>Mới</span></span>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (x != null)
+                                            {
+                                                <span class="feature"><span>@x.KHUYENMAI.TenKhuyenMai</span></span>
+                                            }
+                                        }
+                                    }
+                                </div>
+                                <h3 class="tensp">@item.TenSanPham</h3>
+                                <h4><strong>Hãng: </strong>@item.HANGGIAY.TenHang</h4>
+                                @if (@item.SoLuongTon == null || @item.SoLuongTon == 0)
+                                {
+                                    <h4 style="color:red; font-weight:bold;"><strong style="color:#000;color:lightgreen;">Liên hệ</strong></h4>
+                                }
+                                else
+                                {
+                                    if (x == null)
+                                    {
+                                        <h4 style="color:red; font-weight:bold;"><strong style="color:#000;"></strong>@item.GiaBan USD</h4>
+                                        <h4 style="color:red; font-weight:bold; visibility:hidden"><strong style="color:#000;"></strong>@item.GiaBan USD</h4>
+                                    }
+                                    else
+                                    {
+                                        <h4 style="color:red; font-weight:bold;"><strong style="color:#000;"></strong> @x.GiaKM USD</h4>
+                                        <h4 style="text-decoration: line-through; color: rgba(153,153,153,1); font-weight:bold;"><strong style="color:#000;"></strong>@item.GiaBan USD</h4>
+                                    }
+
+                                }
+                                <div class="SLMua">Đã bán: @item.SoLuongMua</div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+
+        <p style="text-align:center;"><a class="btn btn-danger " href="@Url.Action("Product","SanPham")">Xem Thêm &raquo;</a></p>
+    </div>
+</div>
+@Html.Action("New", "Home")
+@Html.Action("Sale", "Home")

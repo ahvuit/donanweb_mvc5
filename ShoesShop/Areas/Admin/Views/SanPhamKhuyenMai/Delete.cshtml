@@ -1,0 +1,45 @@
+﻿@model ShoesShop.Models.CHITIETKHUYENMAI
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <div class="col-md-6">
+        <strong class="text-danger text-uppercase">Xóa sản phẩm khuyến mãi</strong>
+    </div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên khuyến mãi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHUYENMAI.TenKhuyenMai)
+        </dd>
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SANPHAM.TenSanPham)
+        </dd>
+        <dt>
+            Giá khuyến mãi
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaKM)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,178 @@
+﻿@model ShoesShop.Models.SANPHAM
+@{
+    ViewBag.Title = @Model.TenSanPham;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Css/CssSale/style.css" rel="stylesheet" />
+<div class="row">
+    <div class="nn-product-view">
+        <div class="nn-product-essential row col-md-9 nn-margin-bottom">
+            <div class="row nn-margin-bottom ">
+                <div class="nn-product-image-box col-sm-6">
+                    <div class="nn-product-image-box-main  ">
+                        <img class="img-responsive" src="@Url.Content("~/Images/" +Model.HinhAnh)" width="300" height="400" />
+                        <div class="product-label">
+                            @{var x = Model.CHITIETKHUYENMAIs.Where(m => m.MaSP == Model.MaSP).SingleOrDefault();}
+                            @if (Model.SoLuongTon == 0 || Model.SoLuongTon == null)
+                            {
+                                <span class="sold_out"><span>Sold out</span></span> }
+                            else
+                            {
+                                if (Model.Moi == true)
+                                {
+                                    if (x != null)
+                                    {
+                                        <span class="feature"><span>@x.KHUYENMAI.TenKhuyenMai</span></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="feature"><span>Mới</span></span>
+                                    }
+                                }
+                                else
+                                {
+                                    if (x != null)
+                                    {
+                                        <span class="feature"><span>@x.KHUYENMAI.TenKhuyenMai</span></span>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nn-product-shop col-sm-6">
+
+                    <div class="product-name">
+                        <h1>@Model.TenSanPham</h1>
+                    </div>
+                    <span class="sku_wrapper">
+                        <span class="item-title">Tên sản phẩm:</span>
+                        <span>
+                            <strong>
+                                @Model.TenSanPham - @Model.MaSP
+                            </strong>
+                        </span>
+                    </span>
+                    <span><br /></span>
+                    <span class="category-url-wrapper">
+                        <span class="item-title">Hãng: </span>
+                        <a href="@Url.Action("HangDetail", new { id = @Model.HANGGIAY.MaHang})">@Model.HANGGIAY.TenHang </a>
+                    </span>
+
+                    <div>
+                        <p><strong>Mô tả: </strong>@Model.MoTa</p>
+
+                    </div>
+
+                    <div style="margin-bottom:10px;">
+                        @if (Model.GiaBan == null || Model.GiaBan == 0)
+                        {
+                            <h4 style="color:red; font-weight:bold;"><strong style="color:#000;color:lightgreen;">Liên hệ</strong></h4>
+                        }
+                        else
+                        {
+                            if (x == null)
+                            {
+                                <span><strong>Giá: </strong>@Model.GiaBan USD</span>;
+                            }
+                            else
+                            {
+                                <span><strong>Giá: </strong>@x.GiaKM USD</span>; ;
+                            }
+                            <span class="SLMua">Đã bán: @Model.SoLuongMua</span>
+                        }
+
+                    </div>
+
+                    @if (Model.SoLuongTon == 0 || Model.SoLuongTon == null)
+                    {
+                        <h4> Sản phẩm đã hết</h4>
+                    }
+                    else
+                    {
+
+                        using (Html.BeginForm("ThemGioHang", "GioHang", new { @id = Model.MaSP, @strURL = Request.Url.ToString() }))
+                        {
+                            @Html.Action("SizeGiay", "SanPham")
+                            //<input type="submit" value="Đặt mua" class="btn-success" style=" margin-top:10px; border: 1px solid rgba(0, 0, 0, 0.137); padding: 1vh; outline: none; background-color: lightseagreen" />
+                            <div class="DatMua">
+                                <input type="submit" value="Đặt mua" class="btn-success" style=" margin-top:10px; border: 1px solid rgba(0, 0, 0, 0.137); padding: 1vh; outline: none; background-color: lightseagreen" />
+                            </div>
+                        }
+                    }
+
+                    <br />
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <fieldset class="nn-relate">
+        <legend>Same Category</legend>
+        @foreach (var item in Model.HANGGIAY.SANPHAMs.Skip(1).Take(3))
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <a href="@Url.Action("Details", new {@id=item.MaSP })">
+                    <div class="panel ">
+                        <div class="panel-body">
+                            <p class="Hinh"><img class="img-responsive" src="@Url.Content("~/Images/" +item.HinhAnh)" alt="hinh thumnail" style="width: 230px; height: 230px;"></p>
+                            <div class="product-label">
+                                @{var xx = item.CHITIETKHUYENMAIs.Where(m => m.MaSP == item.MaSP).FirstOrDefault();}
+                                @if (@item.SoLuongTon == 0 || item.SoLuongTon == null)
+                                {
+                                    <span class="sold_out"><span>Sold out</span></span> }
+                                else
+                                {
+                                    if (item.Moi == true)
+                                    {
+                                        if (xx != null)
+                                        {
+                                            <span class="feature"><span>@xx.KHUYENMAI.TenKhuyenMai</span></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="feature"><span>Mới</span></span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (xx != null)
+                                        {
+                                            <span class="feature"><span>@xx.KHUYENMAI.TenKhuyenMai</span></span>
+                                        }
+                                    }
+                                }
+                            </div>
+                            <h3 class="tensp">@item.TenSanPham</h3>
+                            <h4><strong>Hãng: </strong>@item.HANGGIAY.TenHang</h4>
+                            <h4><strong></strong>@item.DANHMUC.TenDanhMuc</h4>
+                            @if (@item.SoLuongTon == null || @item.SoLuongTon == 0)
+                            {
+                                <h4 style="color:red; font-weight:bold;"><strong style="color:#000;color:lightgreen;">Liên hệ</strong></h4>
+                            }
+                            else
+                            {
+                                if (xx == null)
+                                {
+                                    <h4 style="color:red; font-weight:bold;"><strong style="color:#000;"></strong>@item.GiaBan USD</h4>
+                                    <h4 style="color:red; font-weight:bold; visibility:hidden"><strong style="color:#000;"></strong>@item.GiaBan USD</h4>
+                                }
+                                else
+                                {
+                                    <h4 style="color:red; font-weight:bold;"><strong style="color:#000;"></strong> @xx.GiaKM USD</h4>
+                                    <h4 style="text-decoration: line-through; color: rgba(153,153,153,1); font-weight:bold;"><strong style="color:#000;"></strong>@item.GiaBan USD</h4>
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </fieldset>
+</div>
+

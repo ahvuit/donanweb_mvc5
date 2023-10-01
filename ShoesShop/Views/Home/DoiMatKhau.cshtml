@@ -1,0 +1,108 @@
+﻿@model ShoesShop.Models.ACCOUNT
+
+@{
+    <title>Đổi mật khẩu | VLTH Store</title>
+    Layout = null;
+}
+<link href="~/Areas/Assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet">
+<!-- Custom styles for this template-->
+<link href="~/Areas/Assets/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="~/Images/iconWeb.png" rel="shortcut icon" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="container">
+
+            <!-- Outer Row -->
+            <div class="row justify-content-center">
+
+                <div class="col-xl-10 col-lg-12 col-md-9">
+
+                    <div class="card o-hidden border-0 shadow-lg my-5">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row">
+                                <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                                <div class="col-lg-6">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Đổi mật khẩu</h1>
+                                        </div>
+                                        <form class="user">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-7" for="OldPassword">
+                                                    Mật khẩu cũ:
+                                                </label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control text-box single-line input-validation-error"
+                                                           data-val="true" data-val-required="Phải nhập mật khẩu cũ!"
+                                                           id="OldPassword" name="OldPassword" type="password" value="" aria-
+                                                           describedby="OldPassword-error" aria-invalid="true">
+                                                    <span class="text-danger">
+                                                        @ViewData["NhapMKC"]
+                                                        @ViewData["NhapMKCSai"]
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-7" for="NewPassword">
+                                                    Mật khẩu mới:
+                                                </label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control text-box single-line input-validation-error"
+                                                           data-val="true" data-val-required="Phải nhập mật khẩu mới!"
+                                                           id="NewPassword" name="NewPassword" type="password" value="" aria-
+                                                           describedby="NewPassword-error" aria-invalid="true">
+                                                    <span class="text-danger">
+                                                        @ViewData["NhapMKM"]
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-7" for="ReNewPassword">
+                                                    Nhập lại mật khẩu:
+                                                </label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control text-box single-line input-validation-error"
+                                                           data-val="true" data-val-required="Phải nhập mật khẩu xác nhận!"
+                                                           id="ReNewPassword" name="ReNewPassword" type="password" value="" aria-
+                                                           describedby="ReNewPassword-error" aria-invalid="true">
+                                                    <span class="text-danger">
+                                                        @ViewData["NhapMKXN"]
+                                                        @ViewData["MatKhauGiongNhau"]
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <input type="submit" value="Đổi mật khẩu" class="btn btn-primary btn-user " />
+                                            @Html.ActionLink("Hủy", "Index", "Home", new { id = "" }, new { @class = "btn btn-primary" })
+
+                                        </form>
+                                        <hr>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+<style>
+    body {
+        background: cadetblue
+    }
+</style>
